@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count -Down App </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main">
+        <div class="overlay">
+            <h2>We are coming soon</h2>
+            <h3  id="end-date">March 2024 10:00 PM</h3>
+            <div class="col">
+              <div>
+                <input type="text" readonly value="0">
+                <br/>
+                <label for="">Days</label>
+             </div>
+              <div>
+                <input type="text"readonly value="0">
+                <br/>
+                <label for="">Hours</label>
+             </div>
+              <div>
+                <input type="text"readonly value="0">
+                <br/>
+                <label for="">Minutes</label>
+             </div>
+              <div>
+                <input type="text"readonly value="0">
+                <br/>
+                <label for="">Seconds</label>
+             </div>
+            
+              </div>
+            <div>
+              <img src="count-img.png">
+                  <h1> <marquee behavior="alternate" direction="right">Admission period for academic session 2024-25 has to be  Started</marquee><h1>
+            </div>
+        </div>
+        <script>
+        
+           const endDate="18 March 2024 10:00 PM"
+           document.getElementById("end-date").innerText=endDate;
+
+           const inputs =document.querySelectorAll("input");
+           function clock(){
+            const end=new Date(endDate)
+            const now=new Date()
+            const diff= (end-now)/1000;
+            if(diff<0)return;
+          
+            //conveert into days
+            inputs[0].value=Math.floor(diff/3600/24);
+            //convert into hours
+            inputs[1].value=Math.floor(diff/3600)%24;
+            // convert into minutes
+            inputs[2].value=Math.floor(diff/60)%60;
+           // convert into minutes
+            inputs[3].value=Math.floor(diff)%60;
+           }
+           //initial call
+        
+
+           setInterval(
+            ()=>{
+              clock();
+             
+           },1000)
+        </script>
+</body>
+</html>
